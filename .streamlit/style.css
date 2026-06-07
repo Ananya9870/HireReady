@@ -1,0 +1,401 @@
+/* ═══════════════════════════════════════════════
+   SMART ATS RESUME ARCHITECT — Charcoal + Emerald
+   Professional Dark Theme
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Root Variables ── */
+:root {
+  --primary:       #10B981;
+  --primary-dark:  #059669;
+  --primary-light: #34D399;
+  --primary-glow:  rgba(16, 185, 129, 0.18);
+  --bg-main:       #141414;
+  --bg-card:       #1C1C1C;
+  --bg-elevated:   #242424;
+  --bg-sidebar:    #111111;
+  --text-main:     #F1F1F1;
+  --text-secondary:#A3A3A3;
+  --text-muted:    #6B6B6B;
+  --border:        rgba(255,255,255,0.07);
+  --border-active: rgba(16,185,129,0.45);
+  --gold:          #D4AF37;
+  --danger:        #F87171;
+  --warning:       #FBBF24;
+}
+
+/* ── Global ── */
+html, body, [class*="css"] {
+  font-family: 'DM Sans', sans-serif !important;
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+/* ── App Background ── */
+.stApp {
+  background: var(--bg-main) !important;
+  min-height: 100vh;
+}
+
+/* ── Subtle dot pattern ── */
+.stApp::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: radial-gradient(circle, rgba(16,185,129,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Top accent line ── */
+.stApp::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #10B981 30%, #34D399 70%, transparent 100%);
+  z-index: 9999;
+}
+
+/* ── Headings ── */
+h1 {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  color: var(--text-main) !important;
+  letter-spacing: -0.5px !important;
+  margin-bottom: 0.2rem !important;
+}
+
+h1 span, .gradient-text {
+  background: linear-gradient(90deg, #10B981, #34D399) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+h2 {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+  color: var(--text-main) !important;
+  letter-spacing: -0.3px !important;
+}
+
+h3 {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+/* ── Sidebar ── */
+[data-testid="stSidebar"] {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+[data-testid="stSidebar"]::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 1px; height: 100%;
+  background: linear-gradient(180deg, transparent, #10B981 40%, transparent);
+}
+
+[data-testid="stSidebar"] h2 {
+  color: var(--primary-light) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+}
+
+[data-testid="stSidebar"] .stMarkdown p {
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem !important;
+}
+
+/* ── File Uploader ── */
+[data-testid="stFileUploader"] {
+  background: var(--bg-card) !important;
+  border: 1.5px dashed rgba(16,185,129,0.3) !important;
+  border-radius: 10px !important;
+  transition: all 0.25s ease !important;
+}
+
+[data-testid="stFileUploader"]:hover {
+  border-color: var(--primary) !important;
+  background: var(--primary-glow) !important;
+}
+
+/* ── Inputs ── */
+textarea, input[type="text"], input[type="email"], input[type="number"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  color: var(--text-main) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.92rem !important;
+  transition: border 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+textarea:focus, input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.12) !important;
+  outline: none !important;
+}
+
+/* ── Tabs ── */
+[data-testid="stTabs"] [role="tablist"] {
+  background: var(--bg-card) !important;
+  border-radius: 10px !important;
+  padding: 5px !important;
+  border: 1px solid var(--border) !important;
+  gap: 3px !important;
+}
+
+[data-testid="stTabs"] [role="tab"] {
+  border-radius: 7px !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  color: var(--text-muted) !important;
+  padding: 9px 20px !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  letter-spacing: 0.2px !important;
+}
+
+[data-testid="stTabs"] [role="tab"][aria-selected="true"] {
+  background: var(--primary) !important;
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 12px rgba(16,185,129,0.4) !important;
+}
+
+[data-testid="stTabs"] [role="tab"]:hover {
+  background: var(--primary-glow) !important;
+  color: var(--primary-light) !important;
+}
+
+/* ── Buttons ── */
+.stButton > button {
+  background: var(--bg-elevated) !important;
+  color: var(--primary-light) !important;
+  border: 1px solid var(--border-active) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 10px 22px !important;
+  transition: all 0.2s ease !important;
+  letter-spacing: 0.2px !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.stButton > button:hover {
+  background: var(--primary) !important;
+  color: #0a0a0a !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 20px rgba(16,185,129,0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+.stButton > button:active {
+  transform: translateY(0) !important;
+}
+
+/* ── CTA / Run Button ── */
+.stButton > button[kind="primary"] {
+  background: var(--primary) !important;
+  color: #0a0a0a !important;
+  border: none !important;
+  font-weight: 700 !important;
+}
+
+/* ── Download Button ── */
+[data-testid="stDownloadButton"] > button {
+  background: transparent !important;
+  color: var(--primary) !important;
+  border: 1.5px solid var(--primary) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-testid="stDownloadButton"] > button:hover {
+  background: var(--primary) !important;
+  color: #0a0a0a !important;
+  box-shadow: 0 4px 16px rgba(16,185,129,0.3) !important;
+}
+
+/* ── Form Submit ── */
+[data-testid="stFormSubmitButton"] > button {
+  background: var(--primary) !important;
+  color: #0a0a0a !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  width: 100% !important;
+  padding: 13px !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.3px !important;
+  box-shadow: 0 4px 20px rgba(16,185,129,0.25) !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-testid="stFormSubmitButton"] > button:hover {
+  background: var(--primary-light) !important;
+  box-shadow: 0 6px 24px rgba(16,185,129,0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Metric Cards ── */
+[data-testid="stMetric"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  padding: 20px 18px !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+[data-testid="stMetric"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+[data-testid="stMetric"]:hover {
+  border-color: var(--border-active) !important;
+  box-shadow: 0 4px 24px rgba(16,185,129,0.1) !important;
+}
+
+[data-testid="stMetric"]:hover::after {
+  opacity: 1;
+}
+
+[data-testid="stMetricLabel"] {
+  color: var(--text-muted) !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.2px !important;
+}
+
+[data-testid="stMetricValue"] {
+  font-family: 'DM Mono', monospace !important;
+  font-size: 1.9rem !important;
+  font-weight: 500 !important;
+  color: var(--primary-light) !important;
+}
+
+/* ── Divider ── */
+hr {
+  border: none !important;
+  height: 1px !important;
+  background: var(--border) !important;
+  margin: 1.5rem 0 !important;
+}
+
+/* ── Expander ── */
+[data-testid="stExpander"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+[data-testid="stExpander"]:hover {
+  border-color: var(--border-active) !important;
+}
+
+/* ── Alerts ── */
+[data-testid="stAlert"] {
+  border-radius: 8px !important;
+  border-left-width: 3px !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb {
+  background: #2E2E2E;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* ── Chat ── */
+[data-testid="stChatMessage"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  margin: 6px 0 !important;
+}
+
+[data-testid="stChatInputContainer"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-active) !important;
+  border-radius: 10px !important;
+}
+
+/* ── Radio ── */
+[data-testid="stRadio"] label {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  transition: all 0.18s ease !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+}
+
+[data-testid="stRadio"] label:hover {
+  border-color: var(--primary) !important;
+  color: var(--primary-light) !important;
+}
+
+/* ── Selectbox ── */
+[data-testid="stSelectbox"] > div {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+}
+
+/* ── Caption ── */
+.stCaption, small {
+  color: var(--text-muted) !important;
+  font-size: 0.8rem !important;
+}
+
+/* ── Markdown ── */
+.stMarkdown p {
+  color: var(--text-secondary) !important;
+  line-height: 1.7 !important;
+  font-size: 0.93rem !important;
+}
+
+/* ── Code blocks ── */
+code {
+  font-family: 'DM Mono', monospace !important;
+  background: var(--bg-elevated) !important;
+  color: var(--primary-light) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.85rem !important;
+}
+
+/* ── Spinner ── */
+[data-testid="stSpinner"] > div {
+  border-top-color: var(--primary) !important;
+}
