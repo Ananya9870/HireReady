@@ -1,208 +1,224 @@
-# 🚀 HireReady – AI-Powered ATS Resume Architect & Interview Coach
+# HireReady
 
-HireReady is an AI-powered career assistant that helps job seekers optimize their resumes, analyze ATS compatibility, prepare for interviews, and generate professional resumes—all from a single platform.
-
-The application combines Large Language Models (LLMs), Natural Language Processing (NLP), ATS simulation, and PDF generation to provide an end-to-end job application experience.
+An AI-powered resume optimization and interview preparation platform that combines Large Language Models (LLMs), Natural Language Processing (NLP), semantic similarity analysis, and ATS simulation to help candidates improve their resumes, identify skill gaps, prepare for interviews, and generate professional resume templates.
 
 ---
 
-# ✨ Features
+## Overview
 
-## 📊 AI ATS Resume Analysis
-- Upload Resume (PDF/TXT)
-- Paste Job Description
-- AI-powered ATS Simulation
-- Weighted ATS Score
-- Semantic Similarity Score
-- Readability Analysis
-- Skills Matching
-- Experience Evaluation
-- Education Evaluation
-- Keyword Analysis
+HireReady automates multiple stages of the recruitment preparation process through an integrated AI workflow:
 
----
+- Resume Parsing
+- ATS Compatibility Analysis
+- Semantic Resume–Job Description Matching
+- Skill Gap Detection
+- Resume Tailoring using LLMs
+- AI Interview Coach
+- Professional Resume PDF Generation
+- Resume & Report Management
 
-## 🎯 Skill Gap Analysis
-
-Automatically detects:
-
-- Missing Technical Skills
-- Missing Soft Skills
-- Missing Tools & Technologies
-- Extra Skills in Resume
-- Matched Skills
+The application is built using **Python**, **Streamlit**, **Groq LLMs**, **spaCy**, **SQLAlchemy**, and **ReportLab**.
 
 ---
 
-## 📈 Precision • Recall • F1 Score
+# System Architecture
 
-Calculates resume quality using Information Retrieval metrics.
-
-- Precision
-- Recall
-- F1 Score
-- True Positives (Matched Skills)
-- False Positives (Extra Skills)
-- False Negatives (Missing Skills)
+```
+                         User
+                           │
+            Upload Resume + Job Description
+                           │
+                           ▼
+                     Streamlit UI
+                           │
+      ┌────────────────────┼────────────────────┐
+      │                    │                    │
+      ▼                    ▼                    ▼
+ ATS Analysis         Interview Coach     Resume Builder
+      │                    │                    │
+      ▼                    ▼                    ▼
+  Groq LLM API       Groq LLM API         ReportLab PDF
+      │
+      ▼
+ SQLite Database (SQLAlchemy ORM)
+```
 
 ---
 
-## 🧠 Semantic Resume Matching
+# Core Features
 
-Uses spaCy NLP embeddings to compare the semantic meaning of:
+## 1. AI-Based ATS Simulation
+
+Evaluates uploaded resumes against a target Job Description using a weighted ATS scoring mechanism.
+
+Evaluation Categories
+
+| Category | Weight |
+|----------|--------|
+| Skills | 40% |
+| Experience | 30% |
+| Keywords | 15% |
+| Education | 10% |
+| Readability | 5% |
+
+Outputs include:
+
+- Overall ATS Score
+- Category-wise Breakdown
+- Semantic Match Score
+- Missing Keywords
+- Improvement Suggestions
+
+---
+
+## 2. Semantic Resume Matching
+
+Instead of relying solely on keyword matching, HireReady computes semantic similarity between the resume and Job Description using spaCy word embeddings.
+
+Benefits include:
+
+- Better contextual understanding
+- Reduced dependency on exact keywords
+- Improved ATS approximation
+
+---
+
+## 3. Skill Gap Analysis
+
+Automatically extracts skills from both:
 
 - Resume
 - Job Description
 
-instead of relying only on keyword matching.
+and identifies
+
+- Matched Skills
+- Missing Skills
+- Additional Skills
+- Technical Skill Gaps
+- Soft Skill Gaps
 
 ---
 
-## 📖 Resume Readability Analysis
+## 4. Resume Evaluation Metrics
 
-Calculates readability using the Flesch Reading Ease Score to determine how ATS-friendly and recruiter-friendly the resume is.
+The platform computes Information Retrieval metrics to quantify resume relevance.
+
+### Precision
+
+Percentage of resume skills relevant to the Job Description.
+
+### Recall
+
+Percentage of required Job Description skills covered by the resume.
+
+### F1 Score
+
+Harmonic mean of Precision and Recall.
+
+Additional statistics include:
+
+- True Positives
+- False Positives
+- False Negatives
 
 ---
 
-## 🤖 AI Resume Tailoring
+## 5. AI Resume Tailoring
 
-Uses Groq Llama models to:
+Generates an optimized resume using Groq-hosted Llama models.
 
-- Rewrite Resume
-- Improve Bullet Points
-- Apply STAR Method
-- Match Resume to Job Description
-- Optimize ATS Keywords
+Capabilities include
+
+- STAR-based bullet rewriting
+- ATS keyword optimization
+- Experience enhancement
+- Professional formatting
+- Job-specific customization
 
 ---
 
-## 💬 AI Interview Coach
+## 6. AI Interview Coach
 
-Interactive interview preparation chatbot.
+A context-aware conversational assistant that uses:
 
-Supports:
+- Resume
+- Job Description
+- Previous Conversation History
 
-- Technical Interview Questions
-- HR Interview Questions
-- Behavioral Questions
+to generate personalized interview guidance.
+
+Supports
+
+- Technical Interviews
+- Behavioral Interviews
+- HR Interviews
 - Resume-based Questions
-- JD-based Questions
 - Follow-up Conversations
-- Context-aware Memory
 
 ---
 
-## 💾 Chat History
+## 7. Resume Builder
 
-- Save conversations
-- Load previous chats
-- Delete chats
-- Multiple chat sessions
+Generate professionally formatted PDF resumes using two templates.
 
----
+### Engineering Template
 
-## 📝 Resume Builder
-
-Professional Resume Generator with multiple templates.
-
-Supports:
-
-### Template 1
-- Engineering Resume
-- Academic Resume
 - ATS Friendly
+- Academic Layout
+- One-page Format
 
-### Template 2
-- Modern Resume
-- Executive Style
-- Creative Design
+### Modern Template
 
----
-
-## 📄 PDF Resume Generator
-
-Generate downloadable professional PDF resumes with:
-
-- Personal Information
-- Education
-- Skills
-- Experience
-- Projects
-- Coursework
-- Contact Details
+- Executive Design
+- Professional Styling
+- Recruiter Friendly
 
 ---
 
-## 📚 Resume Database
+## 8. Persistent Resume Management
 
-Automatically stores generated reports.
+Generated resumes and ATS reports are automatically stored using SQLite.
 
-Supports:
+Supports
 
-- ATS Reports
-- Tailored Resumes
-- Generated PDFs
-- Report History
-- Delete Reports
-
----
-
-## 🎨 Modern UI
-
-Built using Streamlit with:
-
-- Responsive Layout
-- Sidebar Navigation
-- Tabs
-- Chat Interface
-- Custom CSS
-- Interactive Metrics
-- Download Buttons
+- Resume History
+- ATS Report History
+- Download
+- Delete
 
 ---
 
-# 🛠️ Tech Stack
-
-## Programming Language
-
-- Python 3.11+
-
----
+# Technology Stack
 
 ## Frontend
 
 - Streamlit
 
----
+## Backend
 
-## AI & LLM
+- Python 3.11+
+
+## Large Language Models
 
 - Groq API
-- Llama 3.1 8B Instant
-- Llama 3.3 70B Versatile
+- Llama-3.1-8B-Instant
+- Llama-3.3-70B-Versatile
 
----
-
-## NLP
+## Natural Language Processing
 
 - spaCy
 - NLTK
 - textstat
 
----
-
-## PDF Processing
+## Resume Processing
 
 - PyPDF
-
----
 
 ## Database
 
 - SQLite
 - SQLAlchemy ORM
-
----
 
 ## PDF Generation
 
@@ -210,110 +226,86 @@ Built using Streamlit with:
 
 ---
 
-## Other Libraries
-
-- JSON
-- io
-- datetime
-- Regular Expressions (re)
-
----
-
-# 📂 Project Structure
+# Project Structure
 
 ```
-HireReady/
+HireReady
 │
-├── main.py
-│
-├── db/
+├── db
 │   ├── connection.py
 │   └── queries.py
 │
-├── utils/
+├── utils
 │   ├── agents.py
 │   ├── chatbot.py
 │   ├── generator.py
 │   └── constants.py
 │
-├── .streamlit/
-│   ├── config.toml
-│   └── style.css
+├── .streamlit
+│   ├── style.css
+│   └── secrets.toml
 │
+├── main.py
 ├── requirements.txt
-├── README.md
-└── .env
+└── README.md
 ```
 
 ---
 
-# ⚙️ Installation
+# Installation
 
-## Clone Repository
+Clone the repository
 
 ```bash
 git clone https://github.com/Ananya9870/HireReady.git
-```
-
-```bash
 cd HireReady
 ```
 
----
-
-## Create Virtual Environment
-
-### Windows
+Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate:
+Activate
+
+Windows
 
 ```bash
 venv\Scripts\activate
 ```
 
-### Linux / Mac
-
-```bash
-python3 -m venv venv
-```
+Linux / macOS
 
 ```bash
 source venv/bin/activate
 ```
 
----
-
-## Install Dependencies
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Download spaCy Model
+Download the spaCy model
 
 ```bash
 python -m spacy download en_core_web_md
 ```
 
----
+Configure Groq API
 
-## Configure Environment
+Create
 
-Create a `.streamlit/secrets.toml` file:
-
-```toml
-GROQ_API_KEY="your_groq_api_key"
+```
+.streamlit/secrets.toml
 ```
 
----
+```toml
+GROQ_API_KEY="YOUR_API_KEY"
+```
 
-# ▶️ Run Project
+Run the application
 
 ```bash
 streamlit run main.py
@@ -321,7 +313,7 @@ streamlit run main.py
 
 ---
 
-# 📌 Workflow
+# Workflow
 
 ```
 Upload Resume
@@ -336,89 +328,54 @@ Paste Job Description
 ATS Analysis
         │
         ▼
+Semantic Matching
+        │
+        ▼
 Skill Gap Detection
         │
         ▼
-Precision / Recall / F1
+Resume Tailoring
         │
         ▼
-Tailored Resume
+Interview Preparation
         │
         ▼
-Interview Coach
-        │
-        ▼
-Resume Builder
-        │
-        ▼
-Generate Professional PDF
+Resume Generation
 ```
 
 ---
 
-# 📊 ATS Scoring Parameters
+# Database
 
-The ATS engine evaluates resumes using weighted scoring:
+SQLite is used for persistent storage of
 
-| Category | Weight |
-|----------|--------|
-| Skills | 40% |
-| Experience | 30% |
-| Keywords | 15% |
-| Education | 10% |
-| Readability | 5% |
+- Generated Resume PDFs
+- ATS Reports
+- Tailored Resume Outputs
+
+Database operations are implemented using SQLAlchemy ORM.
 
 ---
 
-# 📈 Skill Matching Metrics
+# Future Improvements
 
-The project computes:
-
-- Precision
-- Recall
-- F1 Score
-- Matched Skills
-- Missing Skills
-- Extra Skills
-
----
-
-# 💡 Key Highlights
-
-- AI-Powered ATS Simulation
-- Resume Tailoring using LLMs
-- Semantic Resume Matching
-- Skill Gap Analysis
-- Precision / Recall / F1 Metrics
-- Context-Aware Interview Coach
-- Professional Resume Generator
-- PDF Export
-- Chat History
-- SQLite Database Integration
-- Responsive Streamlit UI
-
----
-
-# 🔮 Future Improvements
-
-- Multi-language Resume Support
-- OCR for Scanned PDFs
-- Cover Letter Generator
-- LinkedIn Profile Analyzer
-- Resume Version Management
-- Interview Voice Mode
-- AI Mock Interview Evaluation
-- Resume Ranking Against Multiple JDs
+- OCR Support for Scanned Resumes
+- Cover Letter Generation
+- LinkedIn Profile Optimization
+- Resume Version Control
+- Voice-based Mock Interviews
 - Recruiter Dashboard
+- Multi-language Resume Analysis
 - Cloud Deployment
 
 ---
 
-# 👩‍💻 Author
+# Author
 
 **Ananya Kriti**
-- AI/ML Developer
 
 ---
 
-# ⭐ If you found this project useful, don't forget to star the repository!
+## License
+
+This project is intended for educational and research purposes.
